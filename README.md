@@ -1,6 +1,6 @@
 # lastfm-curretly-playing-obs
 
-this is a package that gets the currently playing list from last.fm and displays it in the browser
+this is a package that gets the currently playing list from [last.fm](https://last.fm) and displays it in the browser
 
 it is built to be put into OBS as a browser source
 
@@ -15,6 +15,10 @@ window.config = {
 	api_key: '**LAST.FM API KEY**',
 };
 ```
+
+where the `user` is the desired last.fm username
+and the `api_key` is your api key for last.fm, you can make one [here](https://www.last.fm/api/account/create)
+
 
 ## note
 
