@@ -1,0 +1,132 @@
+body {
+	height: 300px;
+	width: fit-content;
+	display: grid;
+	grid-template-columns: 300px 100%;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#artwork {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: left;
+	text-align: left;
+
+	transition: width 0.3s ease;
+
+	background-color: #000000e0;
+
+	color: #eee;
+	font-family: 'Fira Code', monospace;
+
+	padding: 0 var(--info-padding);
+}
+
+#info div {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+
+	width: max-content;
+
+	word-wrap: none;
+
+	white-space: nowrap;
+}
+
+#info.empty {
+	padding: 0 !important;
+	width: 0 !important;
+}
+
+#info div svg {
+	height: 100%;
+	margin-right: 16px;
+}
+
+:root {
+	--max-width: 52px;
+
+	--info-padding: 48px;
+
+	--song-icon: 48px;
+	--song-size: 44px;
+
+	--album-icon: 36px;
+	--album-size: 32px;
+
+	--artist-icon: 36px;
+	--artist-size: 32px;
+}
+
+#info div .img {
+	width: var(--max-width);
+}
+
+/* song */
+
+#info .song {
+	height: fit-content;
+	font-size: var(--song-size);
+	font-weight: bold;
+}
+
+#info .song .img svg {
+	height: var(--song-icon);
+}
+
+/* album */
+
+#info .album {
+	height: fit-content;
+	font-size: var(--album-size);
+}
+
+#info .album .img svg {
+	height: var(--album-icon);
+}
+
+/* artist */
+
+#info .artist {
+	height: fit-content;
+	font-size: var(--artist-size);
+}
+
+#info .artist .img svg {
+	height: var(--artist-icon);
+}
+
+footer {
+	height: fit-content;
+	width: 284px !important;
+	font-size: 18px;
+	font-family: 'Fira Code', monospace;
+
+	position: absolute;
+	top: 266px;
+	opacity: 1;
+
+	padding: 8px;
+	width: fit-content;
+
+	transition: transform 0.3s ease, opacity 0.3s ease;
+
+	text-align: right;
+	color: #eee;
+}
+
+footer.hidden {
+	opacity: 0;
+}
