@@ -1,5 +1,5 @@
-const LASTFM_USER = window.config.user;
-const LASTFM_API_KEY = window.config.api_key;
+const LASTFM_USER = window.config.user || '';
+const LASTFM_API_KEY = window.config.api_key || '';
 
 const API_URL = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=1&user=${LASTFM_USER}&format=json&api_key=${LASTFM_API_KEY}`;
 
