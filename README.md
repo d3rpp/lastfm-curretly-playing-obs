@@ -15,3 +15,9 @@ window.config = {
 	api_key: '**LAST.FM API KEY**',
 };
 ```
+
+## note
+
+this does mess with the global `window` object in order to set the config in a seperate file (i dont want my api key on here), this isnt going to be a problem but any ts-lint software may become angry, `fix.d.ts` should fix this
+
+```
