@@ -1,6 +1,6 @@
 # lastfm-curretly-playing-obs
 
-this is a package that gets the currently playing list from last.fm and displays it in the browser
+this is a package that gets the currently playing list from [last.fm](https://last.fm) and displays it in the browser
 
 it is built to be put into OBS as a browser source
 
@@ -15,3 +15,15 @@ window.config = {
 	api_key: '**LAST.FM API KEY**',
 };
 ```
+
+where the `user` is the desired last.fm username
+and the `api_key` is your api key for last.fm, you can make one [here](https://www.last.fm/api/account/create)
+
+
+## note
+
+this does mess with the global `window` object in order to set the config in a seperate file (i dont want my api key on here), this isnt going to be a problem but any ts-lint software may become angry, `fix.d.ts` should fix this
+
+this has only been tested with Tidal, i have heard about issues with spotify sometimes lagging behind, if you use tidal it will only work for the desktop application,  though the delay is about 0.5s on the scrobbler
+
+do **NOT** set the update rate (`INTERVAL_TIME`) below 1 second (1000), or last.fm will start rate limiting you and the program will break
