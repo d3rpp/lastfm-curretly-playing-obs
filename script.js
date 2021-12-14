@@ -11,7 +11,9 @@ const ALBUM_ICON = `<div class="img"><svg xmlns="http://www.w3.org/2000/svg" vie
 const ARTIST_ICON = `<div class="img"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#eeeeee"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2m0 10c2.7 0 5.8 1.29 6 2H6c.23-.72 3.31-2 6-2m0-12C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 10c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>`;
 
 // Update Interval
-const INTERVAL_TIME = 1000;
+// do not set below 1
+// number for seconds to update it
+const INTERVAL_TIME = 1;
 
 // the interval id, idk why its here
 let interval;
@@ -111,4 +113,4 @@ const getMax = (numbers) => {
 // console.info({ ARTWORK, NAME, ALBUM, ARTIST, INFO, IP });
 
 // start program
-interval = setInterval(update, INTERVAL_TIME);
+interval = setInterval(update, INTERVAL_TIME * 1000);
