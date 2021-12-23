@@ -1,5 +1,8 @@
 // get the config from the window
+/** @type string */
 const LASTFM_USER = window.config.user || '';
+
+/** @type string */
 const LASTFM_API_KEY = window.config.api_key || '';
 
 if (LASTFM_API_KEY == '' || LASTFM_USER == '') {
@@ -22,9 +25,11 @@ const ARTIST_ICON = `<div class="img"><svg xmlns="http://www.w3.org/2000/svg" vi
 // Update Interval
 // do not set below 1
 // number for seconds to update it
+/** @type number */
 const INTERVAL_TIME = 1;
 
 // the interval id, idk why its here
+/** @type number */
 let interval;
 
 // elements
@@ -61,6 +66,25 @@ if (!ARTWORK || !LOADING || !NAME || !ALBUM || !ARTIST || !INFO || !IP) {
 		IP,
 	});
 }
+
+const updateValueIfChanged = (el, val, maxLength, padding) => {
+	if (!el.textContent.includes(song)) {
+		let tmp = val;
+
+		if (tmp.length > maxLength) {
+			tmp = `${tmp.substring(0, maxLength)}...`;
+		}
+
+		el.setAttribute('style', 'opacity: 0;');
+		NAME.innerHTML = `${padding} ${DOMPurify.sanitize(songName)}`;
+
+		el.removeAttribute('style');
+
+		return 1;
+	}
+
+	return 0;
+};
 
 // update function
 const update = async () => {
@@ -106,54 +130,14 @@ const update = async () => {
 		};
 	}
 
-	// adds the SVG and the sanitized track name
-
 	// checks if value has updated
-	let update = false;
+	let update = 0;
 
-	if (!NAME.textContent.includes(song)) {
-		let songName = song;
+	update += updateValueIfChanged(NAME, song, 25, SONG_ICON);
+	update += updateValueIfChanged(ALBUM, album, 35, ALBUM_ICON);
+	update += updateValueIfChanged(ARTIST, artist, 35, ARTIST_ICON);
 
-		if (songName.length > 25) {
-			songName = `${songName.substring(0, 25)}...`;
-		}
-
-		NAME.setAttribute('style', 'opacity: 0;');
-		NAME.innerHTML = `${SONG_ICON} ${DOMPurify.sanitize(songName)}`;
-		update = true;
-
-		NAME.removeAttribute('style');
-	}
-
-	if (!ALBUM.textContent.includes(album)) {
-		let albumName = album;
-
-		if (albumName.length > 35) {
-			albumName = `${albumName.substring(0, 35)}...`;
-		}
-
-		ALBUM.setAttribute('style', 'opacity: 0;');
-		ALBUM.innerHTML = `${ALBUM_ICON} ${DOMPurify.sanitize(albumName)}`;
-		update = true;
-
-		ALBUM.removeAttribute('style');
-	}
-
-	if (!ARTIST.textContent.includes(artist)) {
-		let artistName = artist;
-
-		if (artistName.length > 35) {
-			artistName = `${artistName.substring(0, 35)}...`;
-		}
-
-		ARTIST.setAttribute('style', 'opacity: 0;');
-		ARTIST.innerHTML = `${ARTIST_ICON} ${DOMPurify.sanitize(artistName)}`;
-		update = true;
-
-		ARTIST.removeAttribute('style');
-	}
-
-	if (update) {
+	if (update > 0) {
 		console.info('UPDATED', { song, album, artist });
 	}
 
