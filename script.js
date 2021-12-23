@@ -28,16 +28,30 @@ const INTERVAL_TIME = 1;
 let interval;
 
 // elements
+/** @type HTMLImageElement */
 const ARTWORK = document.querySelector('#artwork img');
+
+/** @type HTMLElement */
+const LOADING = document.querySelector('.load-container');
+
+/** @type HTMLElement */
 const INFO = document.querySelector('#info');
+
+/** @type HTMLElement */
 const NAME = document.querySelector('#info .song');
+
+/** @type HTMLElement */
 const ALBUM = document.querySelector('#info .album');
+
+/** @type HTMLElement */
 const ARTIST = document.querySelector('#info .artist');
+
+/** @type HTMLElement */
 const IP = document.querySelector('#info footer');
 
 // check to see if all elements are there
-if (!ARTWORK || !NAME || !ALBUM || !ARTIST || !INFO || !IP) {
-	console.error({ ARTWORK, NAME, ALBUM, ARTIST, INFO, IP });
+if (!ARTWORK || !LOADING || !NAME || !ALBUM || !ARTIST || !INFO || !IP) {
+	console.error({ ARTWORK, LOADING, NAME, ALBUM, ARTIST, INFO, IP });
 }
 
 // update function
@@ -67,10 +81,21 @@ const update = async () => {
 	let album = api_response.recenttracks.track[0].album['#text'];
 
 	// get the track name
+	/** @type string */
 	let song = api_response.recenttracks.track[0].name;
 
 	// change the image source to the wanted one, once changed, OBS holds the current image until the new one is loaded (image always 300x300)
-	ARTWORK.setAttribute('src', DOMPurify.sanitize(art));
+	if (!ARTWORK.getAttribute('src').includes(art)) {
+		// hide image, bring in loader
+		ARTWORK.classList.toggle('empty', true);
+		LOADING.classList.toggle('hidden', false);
+
+		ARTWORK.setAttribute('src', DOMPurify.sanitize(art));
+		ARTWORK.onload = () => {
+			ARTWORK.classList.toggle('empty', false);
+			LOADING.classList.toggle('hidden', true);
+		};
+	}
 
 	// adds the SVG and the sanitized track name
 
@@ -78,18 +103,45 @@ const update = async () => {
 	let update = false;
 
 	if (!NAME.textContent.includes(song)) {
-		NAME.innerHTML = `${SONG_ICON} ${DOMPurify.sanitize(song)}`;
+		let songName = song;
+
+		if (songName.length > 25) {
+			songName = `${songName.substring(0, 25)}...`;
+		}
+
+		NAME.setAttribute('style', 'opacity: 0;');
+		NAME.innerHTML = `${SONG_ICON} ${DOMPurify.sanitize(songName)}`;
 		update = true;
+
+		NAME.removeAttribute('style');
 	}
 
 	if (!ALBUM.textContent.includes(album)) {
-		ALBUM.innerHTML = `${ALBUM_ICON} ${DOMPurify.sanitize(album)}`;
+		let albumName = album;
+
+		if (albumName.length > 35) {
+			albumName = `${albumName.substring(0, 35)}...`;
+		}
+
+		ALBUM.setAttribute('style', 'opacity: 0;');
+		ALBUM.innerHTML = `${ALBUM_ICON} ${DOMPurify.sanitize(albumName)}`;
 		update = true;
+
+		ALBUM.removeAttribute('style');
 	}
 
 	if (!ARTIST.textContent.includes(artist)) {
-		ARTIST.innerHTML = `${ARTIST_ICON} ${DOMPurify.sanitize(artist)}`;
+		let artistName = artist;
+
+		if (artistName.length > 35) {
+			artistName = `${artistName.substring(0, 35)}...`;
+		}
+
+		ARTIST.setAttribute('style', 'opacity: 0;');
+		ARTIST.innerHTML = `${ARTIST_ICON} ${DOMPurify.sanitize(artistName)}`;
 		update = true;
+
+		ARTIST.removeAttribute('style');
 	}
 
 	if (update) {

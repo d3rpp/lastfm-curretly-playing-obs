@@ -28,21 +28,31 @@
 				filled with placeholder image until first track is loaded
 			 -->
 			<img
-				src="https://via.placeholder.com/300x300?text=loading"
+				src="null"
 				alt="Artwork"
 				width="300px"
 				height="300px"
+				class="empty"
 			/>
+
+			<div class="load-container">
+				<div class="lds-ellipsis">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+			</div>
 		</div>
 		<div id="info" class="empty">
 			<!-- Song DIV -->
-			<div class="song"></div>
+			<div class="song" style="opacity: 0"></div>
 
 			<!-- Album DIV -->
-			<div class="album"></div>
+			<div class="album" style="opacity: 0"></div>
 
 			<!-- Artist DIV -->
-			<div class="artist"></div>
+			<div class="artist" style="opacity: 0"></div>
 
 			<!-- removing this comes with the chance of your API key being suspended for breaking the last.fm API Terms of Service -->
 			<footer style="left: 300px" class="hidden">

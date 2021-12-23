@@ -13,6 +13,18 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	opacity: 1;
+
+	background-color: #000000e0;
+}
+
+#artwork img {
+	opacity: 1;
+	transition: opacity 200ms ease;
+}
+
+#artwork img.empty {
+	opacity: 0;
 }
 
 #info {
@@ -22,12 +34,16 @@ body {
 	align-items: left;
 	text-align: left;
 
-	transition: width 0.3s ease;
+	transition: width 300ms ease;
 
 	background-color: #000000e0;
 
+	box-shadow: -64 px 0px #000000e0 inset;
+
 	color: #eee;
 	font-family: 'Fira Code', monospace;
+
+	overflow: hidden;
 
 	padding: 0 var(--info-padding);
 }
@@ -43,6 +59,8 @@ body {
 	word-wrap: none;
 
 	white-space: nowrap;
+
+	transition: opacity 300ms ease;
 }
 
 #info.empty {
@@ -129,4 +147,84 @@ footer {
 
 footer.hidden {
 	opacity: 0;
+}
+
+/* CSS LOADER */
+
+.load-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 1;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 300px;
+	height: 300px;
+
+	transition: opacity 100ms ease;
+}
+
+.load-container.hidden {
+	opacity: 0;
+}
+
+.lds-ellipsis {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+
+	overflow: hidden;
+}
+.lds-ellipsis div {
+	position: absolute;
+	top: 33px;
+	width: 13px;
+	height: 13px;
+	border-radius: 50%;
+	background: #eee;
+	animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+	left: 8px;
+	animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+	left: 8px;
+	animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+	left: 32px;
+	animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+	left: 56px;
+	animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+@keyframes lds-ellipsis3 {
+	0% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+@keyframes lds-ellipsis2 {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(24px, 0);
+	}
 }
