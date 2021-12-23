@@ -51,7 +51,15 @@ const IP = document.querySelector('#info footer');
 
 // check to see if all elements are there
 if (!ARTWORK || !LOADING || !NAME || !ALBUM || !ARTIST || !INFO || !IP) {
-	console.error({ ARTWORK, LOADING, NAME, ALBUM, ARTIST, INFO, IP });
+	console.error('MISSING HTML ELEMENT', {
+		ARTWORK,
+		LOADING,
+		NAME,
+		ALBUM,
+		ARTIST,
+		INFO,
+		IP,
+	});
 }
 
 // update function
@@ -61,11 +69,12 @@ const update = async () => {
 
 	// if the reponse doesn't have anything, assume an error and return
 	if (!api_response.recenttracks) return;
-	try {
-		if (!api_response.recenttracks.track[0]['@attr'].nowplaying) return;
-	} catch (_) {
-		return;
-	}
+	// UNCOMMENT IF WANT TO CHECK IF CURRENTLY PLAYING
+	// try {
+	// 	if (!api_response.recenttracks.track[0]['@attr'].nowplaying) return;
+	// } catch (_) {
+	// 	return;
+	// }
 
 	// get the art, it is an image url
 	let art =
@@ -155,7 +164,7 @@ const update = async () => {
 	// set the style of the info to the necessary width, allows for CSS animations
 	INFO.setAttribute(
 		'style',
-		`width:${getMax([
+		`width: ${getMax([
 			NAME.getBoundingClientRect().width,
 			ALBUM.getBoundingClientRect().width,
 			ARTIST.getBoundingClientRect().width,
@@ -166,7 +175,7 @@ const update = async () => {
 	// moves the required "powered by AudioScrobbler" to keep it on the right of the content
 	IP.setAttribute(
 		'style',
-		`transform:translateX(${
+		`transform: translateX(${
 			getMax([
 				NAME.getBoundingClientRect().width,
 				ALBUM.getBoundingClientRect().width,
@@ -189,9 +198,6 @@ const getMax = (numbers) => {
 
 	return max;
 };
-
-// log out the elements, for debugging purposes
-// console.info({ ARTWORK, NAME, ALBUM, ARTIST, INFO, IP });
 
 // start program
 interval = setInterval(update, INTERVAL_TIME * 1000);
