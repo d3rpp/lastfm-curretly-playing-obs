@@ -11,7 +11,9 @@ to get it to work, add a `constants.js` file in the root of the project (next to
 
 ```js
 window.config = {
+	/** @type string */
 	user: '**YOUR LAST.FM USERNAME**',
+	/** @type string */
 	api_key: '**LAST.FM API KEY**',
 };
 ```
