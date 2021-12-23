@@ -18,6 +18,7 @@ window.config = {
 
 where the `user` is the desired last.fm username
 and the `api_key` is your api key for last.fm, you can make one [here](https://www.last.fm/api/account/create)
+this is effectively the same as a `.env` file, except I don't want to setup `dotenv`
 
 
 ## note

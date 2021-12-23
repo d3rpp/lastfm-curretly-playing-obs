@@ -2,6 +2,15 @@
 const LASTFM_USER = window.config.user || '';
 const LASTFM_API_KEY = window.config.api_key || '';
 
+if (LASTFM_API_KEY == '' || LASTFM_USER == '') {
+	console.error('MISSING API KEY AND/OR USERNAME FOR last.fm', {
+		LASTFM_USER,
+		LASTFM_API_KEY,
+	});
+
+	throw 'Bruh';
+}
+
 // API URL
 const API_URL = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=1&user=${LASTFM_USER}&format=json&api_key=${LASTFM_API_KEY}`;
 
@@ -38,13 +47,18 @@ const update = async () => {
 
 	// if the reponse doesn't have anything, assume an error and return
 	if (!api_response.recenttracks) return;
-	if (!api_response.recenttracks.track[0]['@attr'].nowplaying) return;
+	try {
+		if (!api_response.recenttracks.track[0]['@attr'].nowplaying) return;
+	} catch (_) {
+		return;
+	}
 
 	// get the art, it is an image url
 	let art =
 		api_response.recenttracks.track[0].image[
 			api_response.recenttracks.track[0].image.length - 1
 		]['#text'];
+	// the scrobbler api has some very ODD syntax
 
 	// get the artist name
 	let artist = api_response.recenttracks.track[0].artist['#text'];
@@ -59,13 +73,28 @@ const update = async () => {
 	ARTWORK.setAttribute('src', DOMPurify.sanitize(art));
 
 	// adds the SVG and the sanitized track name
-	NAME.innerHTML = `${SONG_ICON} ${DOMPurify.sanitize(song)}`;
 
-	// adds the SVG and the sanitized album name
-	ALBUM.innerHTML = `${ALBUM_ICON} ${DOMPurify.sanitize(album)}`;
+	// checks if value has updated
+	let update = false;
 
-	// adds the SVG and the sanitized artist name
-	ARTIST.innerHTML = `${ARTIST_ICON} ${DOMPurify.sanitize(artist)}`;
+	if (!NAME.textContent.includes(song)) {
+		NAME.innerHTML = `${SONG_ICON} ${DOMPurify.sanitize(song)}`;
+		update = true;
+	}
+
+	if (!ALBUM.textContent.includes(album)) {
+		ALBUM.innerHTML = `${ALBUM_ICON} ${DOMPurify.sanitize(album)}`;
+		update = true;
+	}
+
+	if (!ARTIST.textContent.includes(artist)) {
+		ARTIST.innerHTML = `${ARTIST_ICON} ${DOMPurify.sanitize(artist)}`;
+		update = true;
+	}
+
+	if (update) {
+		console.info('UPDATED', { song, album, artist });
+	}
 
 	// it is no longer empty, only effective on initial load
 	INFO.classList.toggle('empty', false);
