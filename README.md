@@ -25,6 +25,6 @@ this is effectively the same as a `.env` file, except I don't want to setup `dot
 
 this does mess with the global `window` object in order to set the config in a seperate file (i dont want my api key on here), this isnt going to be a problem but any ts-lint software may become angry, `fix.d.ts` should fix this
 
-this has only been tested with Tidal, i have heard about issues with spotify sometimes lagging behind, if you use tidal it will only work for the desktop application,  though the delay is about 0.5s on the scrobbler
+this has only been tested with Tidal, i have heard about issues with spotify sometimes lagging behind, if you use tidal you need to ensure that last.fm is linked individually on both desktop and mobile (or just the one you use to play music in stream if you really want)
 
 do **NOT** set the update rate (`INTERVAL_TIME`) below 1, or last.fm will start rate limiting you and the program will break
