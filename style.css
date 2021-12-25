@@ -60,7 +60,9 @@ body {
 
 	white-space: nowrap;
 
-	transition: opacity 300ms ease;
+	transform: none;
+
+	transition: opacity 300ms ease, transform 200ms ease;
 }
 
 #info.empty {

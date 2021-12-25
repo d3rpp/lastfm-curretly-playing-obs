@@ -67,23 +67,29 @@ if (!ARTWORK || !LOADING || !NAME || !ALBUM || !ARTIST || !INFO || !IP) {
 	});
 }
 
+/**
+ *
+ * Update DOM with new value
+ *
+ * @param {HTMLElement} el
+ * @param {string} val
+ * @param {number} maxLength
+ * @param {string} padding
+ * @returns void
+ */
 const updateValueIfChanged = (el, val, maxLength, padding) => {
-	if (!el.textContent.includes(song)) {
-		let tmp = val;
+	if (el.textContent.includes(val)) return;
 
-		if (tmp.length > maxLength) {
-			tmp = `${tmp.substring(0, maxLength)}...`;
-		}
+	let tmp = val;
 
-		el.setAttribute('style', 'opacity: 0;');
-		NAME.innerHTML = `${padding} ${DOMPurify.sanitize(songName)}`;
-
-		el.removeAttribute('style');
-
-		return 1;
+	if (tmp.length > maxLength) {
+		tmp = `${tmp.substring(0, maxLength)}...`;
 	}
 
-	return 0;
+	el.setAttribute('style', "opacity: 0; transform: translateX('8px');");
+	el.innerHTML = `${padding} ${DOMPurify.sanitize(tmp)}`;
+
+	el.removeAttribute('style');
 };
 
 // update function
@@ -108,10 +114,13 @@ const update = async () => {
 	// the scrobbler api has some very ODD syntax
 
 	// get the artist name
-	let artist = api_response.recenttracks.track[0].artist['#text'];
+	/** @type string */
+	let artist =
+		api_response.recenttracks.track[0].artist['#text'] || 'unknown';
 
 	// get the album name
-	let album = api_response.recenttracks.track[0].album['#text'];
+	/** @type string */
+	let album = api_response.recenttracks.track[0].album['#text'] || 'unknown';
 
 	// get the track name
 	/** @type string */
@@ -131,15 +140,10 @@ const update = async () => {
 	}
 
 	// checks if value has updated
-	let update = 0;
 
-	update += updateValueIfChanged(NAME, song, 25, SONG_ICON);
-	update += updateValueIfChanged(ALBUM, album, 35, ALBUM_ICON);
-	update += updateValueIfChanged(ARTIST, artist, 35, ARTIST_ICON);
-
-	if (update > 0) {
-		console.info('UPDATED', { song, album, artist });
-	}
+	updateValueIfChanged(NAME, song, 25, SONG_ICON);
+	updateValueIfChanged(ALBUM, album, 35, ALBUM_ICON);
+	updateValueIfChanged(ARTIST, artist, 35, ARTIST_ICON);
 
 	// it is no longer empty, only effective on initial load
 	INFO.classList.toggle('empty', false);
