@@ -38,7 +38,7 @@ body {
 
 	background-color: #000000e0;
 
-	box-shadow: -64 px 0px #000000e0 inset;
+	box-shadow: 32px 0px #000000e0;
 
 	color: #eee;
 	font-family: 'Fira Code', monospace;
@@ -135,7 +135,7 @@ footer {
 	font-family: 'Fira Code', monospace;
 
 	position: absolute;
-	top: 266px;
+	top: 250px;
 	opacity: 1;
 
 	padding: 8px;
