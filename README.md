@@ -27,6 +27,16 @@ where the `user` is the desired last.fm username
 and the `api_key` is your api key for last.fm, you can make one [here](https://www.last.fm/api/account/create)
 this is effectively the same as a `.env` file, except I don't want to setup `dotenv`
 
+## Installation
+
+If you would like to setup this application, feel free to go into the wiki by clicking on the `Wiki` tab above, it provides a better understanding of the installation and which music apps the software officially supports and any important details that allow it to function better.
+
+If you have any issue with installation feel free to contact me at
+
+- Email: [bug@d3rpp.dev](mailto:bug@d3rpp.dev?subject=OBS%20Now%20Playing%20Layer%20Question)
+- Discord: d3rpp#4608
+
+
 
 ## note
 
