@@ -3,7 +3,7 @@
 ![Security Status](https://github.com/d3rpp/lastfm-curretly-playing-obs/actions/workflows/codeql-analysis.yml/badge.svg)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://gitHub.com/d3rpp/lastfm-curretly-playing-obs/graphs/commit-activity)
 ![Maintainer](https://img.shields.io/badge/Maintainer-d3rpp-blue)
-[![Latest Release](https://badgen.net/github/release/d3rpp/lastfm-curretly-playing-obs)](https://github.com/d3rpp/lastfm-currently-playing-obs/releases/latest)
+[![Latest Release](https://badgen.net/github/release/d3rpp/lastfm-curretly-playing-obs)](https://github.com/d3rpp/lastfm-curretly-playing-obs/releases/latest)
 
 this is a package that gets the currently playing list from [last.fm](https://last.fm) and displays it in the browser
 
