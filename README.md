@@ -36,7 +36,17 @@ If you have any issue with installation feel free to contact me at
 - Email: [bug@d3rpp.dev](mailto:bug@d3rpp.dev?subject=OBS%20Now%20Playing%20Layer%20Question)
 - Discord: d3rpp#4608
 
+# Support
 
+| Name | Status | Note |
+| :---: | :---: | --- |
+| Tidal | ✅ | with ~1 second of delay |
+| Spotify | ✅ | Spotify has a tendency to break on the occasion, but otherwise functions without issue with minimal delay |
+| Apple Music | ❔ | I haven't been able to get this working, Apple is very protective of this stuff |
+| YouTube Music | ❔ | un-tested |
+| SoundCloud | ❔ | un-tested |
+
+I switched from Tidal to Spotify Recently and I have so far seen that Spotify works with little issue
 
 ## note
 
