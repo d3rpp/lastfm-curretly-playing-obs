@@ -55,3 +55,11 @@ this does mess with the global `window` object in order to set the config in a s
 this has only been tested with Tidal, i have heard about issues with spotify sometimes lagging behind, if you use tidal you need to ensure that last.fm is linked individually on both desktop and mobile (or just the one you use to play music in stream if you really want)
 
 do **NOT** set the update rate (`INTERVAL_TIME`) below 1, or last.fm will start rate limiting you and the program will break
+
+# Disclaimer
+
+While the music you play *may* be copyright free, the album are may still be copyrighted, as such, by using this you are doing so at your **own risk**. I will not be help liable if the music you are playing gets you a DMCA strike, copyright infrignement, etc.
+
+In the future i will be adding a blur option to blur album art in an effort to aid against DMCA strikes of the album image, however, if you decide to play copyrighted music, this will not protect you in any way, shape, or form, against copyright infringement.
+
+You have been warned, dont be stupid.
