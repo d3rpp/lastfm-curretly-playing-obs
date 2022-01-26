@@ -12,7 +12,7 @@ it is built to be put into OBS as a browser source
 set the width to the width of the window (the program changes the width depending on the title
 set the height to 300px
 
-to get it to work, add a `constants.js` file in the root of the project (next to the HTML file) and fill it like such
+to get it to work, edit `constants.js` file in the root of the project (next to the HTML file) and fill it like such
 
 ```js
 window.config = {
@@ -20,6 +20,8 @@ window.config = {
 	user: '**YOUR LAST.FM USERNAME**',
 	/** @type string */
 	api_key: '**LAST.FM API KEY**',
+	/** @type boolean */
+	blur_album_art: true
 };
 ```
 
@@ -60,6 +62,6 @@ do **NOT** set the update rate (`INTERVAL_TIME`) below 1, or last.fm will start 
 
 While the music you play *may* be copyright free, the album are may still be copyrighted, as such, by using this you are doing so at your **own risk**. I will not be help liable if the music you are playing gets you a DMCA strike, copyright infrignement, etc.
 
-In the future i will be adding a blur option to blur album art in an effort to aid against DMCA strikes of the album image, however, if you decide to play copyrighted music, this will not protect you in any way, shape, or form, against copyright infringement.
+I have added a blur option to blur album art in an effort to aid against DMCA strikes of the album image, however, if you decide to play copyrighted music, this will not protect you in any way, shape, or form, against copyright infringement.
 
 You have been warned, dont be stupid.

@@ -5,6 +5,9 @@ const LASTFM_USER = window.config.user || '';
 /** @type string */
 const LASTFM_API_KEY = window.config.api_key || '';
 
+/** @type boolean */
+const BLUR_ALBUM_ART = window.config.blur_album_art || true;
+
 if (LASTFM_API_KEY == '' || LASTFM_USER == '') {
 	console.error('MISSING API KEY AND/OR USERNAME FOR last.fm', {
 		LASTFM_USER,
@@ -49,6 +52,11 @@ const ARTIST = document.querySelector('#info .artist span');
 /** @type HTMLElement */
 const IP = document.querySelector('#info footer');
 
+// Initialise blur paramenters
+if (BLUR_ALBUM_ART) {
+	ARTWORK.classList.toggle('blur', true);
+}
+
 // check to see if all elements are there
 if (!ARTWORK || !LOADING || !NAME || !ALBUM || !ARTIST || !INFO || !IP) {
 	console.error('MISSING HTML ELEMENT', {
@@ -90,7 +98,13 @@ const updateValueIfChanged = (el, val, maxLength) => {
 // update function
 const update = async () => {
 	// get the data
-	let api_response = await (await fetch(API_URL)).json();
+	let api_response = await (
+		await fetch(API_URL).catch((err) => {
+			console.error(
+				'UNABLE TO MAKE API REQUEST, PLEASE MAKE SURE THAT THE API KEY IS SET CORRECTLY'
+			);
+		})
+	).json();
 
 	// if the reponse doesn't have anything, assume an error and return
 	if (!api_response.recenttracks) return;

@@ -27,6 +27,10 @@ body {
 	opacity: 0;
 }
 
+#artwork img.blur {
+	filter: blur(8px);
+}
+
 #info {
 	display: flex;
 	flex-direction: column;
