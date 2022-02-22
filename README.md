@@ -10,7 +10,7 @@ this is a package that gets the currently playing list from [last.fm](https://la
 it is built to be put into OBS as a browser source
 
 set the width to the width of the window (the program changes the width depending on the title
-set the height to 300px
+set the height to 300px. Additionally in the OBS Browser source, ensure the Custom CSS field is empty.
 
 to get it to work, edit `constants.js` file in the root of the project (next to the HTML file) and fill it like such
 
