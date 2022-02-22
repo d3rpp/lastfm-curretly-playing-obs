@@ -52,7 +52,7 @@ I switched from Tidal to Spotify Recently and I have so far seen that Spotify wo
 
 ## note
 
-this does mess with the global `window` object in order to set the config in a seperate file (i dont want my api key on here), this isnt going to be a problem on the browser, a;though any linting software may become [angery](https://youtu.be/5jO2PLqEdUY?t=67), `fix.d.ts` should fix this
+this does mess with the global `window` object in order to set the config in a seperate file (i dont want my api key on here), this isnt going to be a problem on the browser, although any linting software may become [angery](https://youtu.be/5jO2PLqEdUY?t=67), `fix.d.ts` should fix this
 
 this has only been tested with Tidal, i have heard about issues with spotify sometimes lagging behind, if you use tidal you need to ensure that last.fm is linked individually on both desktop and mobile (or just the one you use to play music in stream if you really want)
 
