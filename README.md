@@ -10,7 +10,7 @@ this is a package that gets the currently playing list from [last.fm](https://la
 it is built to be put into OBS as a browser source
 
 set the width to the width of the window (the program changes the width depending on the title
-set the height to 300px
+set the height to 300px. Additionally in the OBS Browser source, ensure the Custom CSS field is empty.
 
 to get it to work, edit `constants.js` file in the root of the project (next to the HTML file) and fill it like such
 
@@ -52,7 +52,7 @@ I switched from Tidal to Spotify Recently and I have so far seen that Spotify wo
 
 ## note
 
-this does mess with the global `window` object in order to set the config in a seperate file (i dont want my api key on here), this isnt going to be a problem on the browser, a;though any linting software may become [angery](https://youtu.be/5jO2PLqEdUY?t=67), `fix.d.ts` should fix this
+this does mess with the global `window` object in order to set the config in a seperate file (i dont want my api key on here), this isnt going to be a problem on the browser, although any linting software may become [angery](https://youtu.be/5jO2PLqEdUY?t=67), `fix.d.ts` should fix this
 
 this has only been tested with Tidal, i have heard about issues with spotify sometimes lagging behind, if you use tidal you need to ensure that last.fm is linked individually on both desktop and mobile (or just the one you use to play music in stream if you really want)
 
