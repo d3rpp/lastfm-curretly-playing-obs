@@ -27,7 +27,7 @@ const API_URL = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&
 // do not set below 1
 // number for seconds to update it
 /** @type number */
-const INTERVAL_TIME = 0.5;
+const INTERVAL_TIME = 1;
 
 // the interval id, idk why its here
 /** @type number */
@@ -204,5 +204,12 @@ const getMax = (numbers) => {
 	return max;
 };
 
-// start program
-interval = setInterval(update, INTERVAL_TIME * 1000);
+const main = async () => {
+	while (true) {
+		await update();
+		// wait
+		await new Promise((res) => setTimeout(res, INTERVAL_TIME * 1000));
+	}
+};
+
+main();
