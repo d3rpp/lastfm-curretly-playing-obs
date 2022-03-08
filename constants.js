@@ -4,5 +4,7 @@ window.config = {
 	/** @type string */
 	api_key: '',
 	/** @type boolean */
-	blur_album_art: true,
+	blur: false,
+	/** @type boolean */
+	disappear_on_not_playing: true,
 };

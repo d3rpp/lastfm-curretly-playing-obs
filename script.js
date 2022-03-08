@@ -6,7 +6,10 @@ const LASTFM_USER = window.config.user || '';
 const LASTFM_API_KEY = window.config.api_key || '';
 
 /** @type boolean */
-const BLUR_ALBUM_ART = window.config.blur_album_art || true;
+const BLUR_ALBUM_ART = window.config.blur;
+
+/** @type boolean */
+const DISAPPEAR_ON_NOT_PLAYING = window.config.dissapear_on_not_playing || true;
 
 if (LASTFM_API_KEY == '' || LASTFM_USER == '') {
 	console.error('MISSING API KEY AND/OR USERNAME FOR last.fm', {
@@ -24,11 +27,15 @@ const API_URL = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&
 // do not set below 1
 // number for seconds to update it
 /** @type number */
-const INTERVAL_TIME = 1;
+const INTERVAL_TIME = 0.5;
 
 // the interval id, idk why its here
 /** @type number */
 let interval;
+
+// whether or not a song is currently playing
+/** @type boolean */
+let is_current = true;
 
 // elements
 /** @type HTMLImageElement */
@@ -52,9 +59,14 @@ const ARTIST = document.querySelector('#info .artist span');
 /** @type HTMLElement */
 const IP = document.querySelector('#info footer');
 
+/** @type HTMLElement */
+const BODY = document.querySelector('body');
+
 // Initialise blur paramenters
 if (BLUR_ALBUM_ART) {
 	ARTWORK.classList.toggle('blur', true);
+} else {
+	ARTWORK.classList.toggle('blur', false);
 }
 
 // check to see if all elements are there
@@ -108,12 +120,21 @@ const update = async () => {
 
 	// if the reponse doesn't have anything, assume an error and return
 	if (!api_response.recenttracks) return;
-	// UNCOMMENT IF WANT TO CHECK IF CURRENTLY PLAYING
-	// try {
-	// 	if (!api_response.recenttracks.track[0]['@attr'].nowplaying) return;
-	// } catch (_) {
-	// 	return;
-	// }
+
+	try {
+		if (api_response.recenttracks.track[0]['@attr']['nowplaying']) {
+			is_current = true;
+		}
+	} catch {
+		is_current = false;
+	}
+
+	if (DISAPPEAR_ON_NOT_PLAYING) {
+		BODY.classList.toggle('current', is_current);
+		INFO.classList.toggle('current', is_current);
+	}
+
+	if (!is_current && DISAPPEAR_ON_NOT_PLAYING) return;
 
 	// get the art, it is an image url
 	let art =

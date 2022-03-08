@@ -9,6 +9,16 @@ body {
 	box-sizing: border-box;
 }
 
+body.current {
+	opacity: 1;
+	transition: opacity 200ms ease;
+}
+
+body:not(.current) {
+	opacity: 0;
+	transition: opacity 200ms 100ms ease;
+}
+
 #artwork {
 	display: flex;
 	justify-content: center;
@@ -31,14 +41,16 @@ body {
 	filter: blur(8px);
 }
 
+#artwork img:not(.blur) {
+	filter: none;
+}
+
 #info {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: left;
 	text-align: left;
-
-	transition: width 300ms ease;
 
 	background-color: #000000e0;
 
@@ -50,6 +62,15 @@ body {
 	overflow: hidden;
 
 	padding: 0 var(--info-padding);
+}
+
+#info:not(.current) {
+	width: 0px !important;
+	transition: width 200ms ease;
+}
+
+#info.current {
+	transition: width 200ms 100ms ease;
 }
 
 #info div {
