@@ -16,7 +16,7 @@ body.current {
 
 body:not(.current) {
 	opacity: 0;
-	transition: opacity 200ms 100ms ease;
+	transition: opacity 200ms 200ms ease;
 }
 
 #artwork {
@@ -30,7 +30,7 @@ body:not(.current) {
 
 #artwork img {
 	opacity: 1;
-	transition: opacity 200ms ease;
+	transition: opacity 100ms ease;
 }
 
 #artwork img.empty {
@@ -66,11 +66,12 @@ body:not(.current) {
 
 #info:not(.current) {
 	width: 0px !important;
-	transition: width 200ms ease;
+	padding: 0px !important;
+	transition: width 200ms ease, padding 200ms ease;
 }
 
 #info.current {
-	transition: width 200ms 100ms ease;
+	transition: width 200ms 200ms ease, padding 200ms 200ms ease;
 }
 
 #info div {
