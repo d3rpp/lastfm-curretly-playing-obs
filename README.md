@@ -58,7 +58,7 @@ this does mess with the global `window` object in order to set the config in a s
 
 this has only been tested with Tidal, i have heard about issues with spotify sometimes lagging behind, if you use tidal you need to ensure that last.fm is linked individually on both desktop and mobile (or just the one you use to play music in stream if you really want)
 
-do **NOT** set the update rate (`INTERVAL_TIME`) below 1, or last.fm will start rate limiting you and the program will break
+do **NOT** set the update rate (`INTERVAL_TIME`) below 0.5, or last.fm will start rate limiting you and the program will break
 
 # Disclaimer
 
