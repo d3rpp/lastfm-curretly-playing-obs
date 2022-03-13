@@ -167,7 +167,9 @@ footer {
 	padding: 8px;
 	width: fit-content;
 
-	transition: transform 0.2s ease, opacity 0.1s ease;
+	transform: translateX(0px);
+
+	transition: transform 0.2s 0.2s ease, opacity 0.1s 0.2s ease;
 	overflow: hidden;
 
 	text-align: right;
@@ -176,6 +178,8 @@ footer {
 
 footer.hidden {
 	opacity: 0;
+	transform: translateX(-236px);
+	transition: transform 0.2s ease, opacity 0.2s 0.1s ease;
 }
 
 /* CSS LOADER */

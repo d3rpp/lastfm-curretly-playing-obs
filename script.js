@@ -132,7 +132,8 @@ const update = async () => {
 	if (DISAPPEAR_ON_NOT_PLAYING) {
 		BODY.classList.toggle('current', is_current);
 		INFO.classList.toggle('current', is_current);
-		IP.setAttribute('style', `transform: translateX(-236px);opacity:0;`);
+		IP.setAttribute('style', 'transform: translateX(-236px);');
+		IP.classList.toggle('hidden', !is_current);
 	}
 
 	if (!is_current && DISAPPEAR_ON_NOT_PLAYING) return;
