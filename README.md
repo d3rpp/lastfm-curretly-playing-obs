@@ -21,7 +21,7 @@ window.config = {
 	/** @type string */
 	api_key: '**LAST.FM API KEY**',
 	/** @type boolean */
-	blur_album_art: true
+	blur_album_art: true,
 	/** @type boolean */
 	disappear_on_not_playing: true
 };
