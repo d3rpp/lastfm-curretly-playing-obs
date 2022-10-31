@@ -1,7 +1,7 @@
 # lastfm-curretly-playing-obs
 
 ![Security Status](https://github.com/d3rpp/lastfm-curretly-playing-obs/actions/workflows/codeql-analysis.yml/badge.svg)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://gitHub.com/d3rpp/lastfm-curretly-playing-obs/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-will%20fix%20issues-orange.svg)](https://gitHub.com/d3rpp/lastfm-curretly-playing-obs/graphs/commit-activity)
 ![Maintainer](https://img.shields.io/badge/Maintainer-d3rpp-blue)
 [![Latest Release](https://badgen.net/github/release/d3rpp/lastfm-curretly-playing-obs)](https://github.com/d3rpp/lastfm-curretly-playing-obs/releases/latest)
 
@@ -46,7 +46,7 @@ If you have any issue with installation feel free to contact me at
 | :---: | :---: | --- |
 | Tidal | ✅ | with ~1 second of delay |
 | Spotify | ✅ | Spotify has a tendency to break on the occasion, but otherwise functions without issue with minimal delay |
-| Apple Music | ❔ | I haven't been able to get this working, Apple is very protective of this stuff |
+| Apple Music | ❔ | I haven't been able to get this working, Apple is very protective of this stuff (functional with [Cider](https://cider.sh)) |
 | YouTube Music | ❔ | un-tested |
 | SoundCloud | ❔ | un-tested |
 
